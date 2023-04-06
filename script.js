@@ -22,8 +22,12 @@ async function getUsers() {
             const searchedString = inputSearch.value.toLowerCase().replace(/\s/g, "")
 
             data.results.forEach(el => {
-                if (el.name.first.toLowerCase().includes(searchedString) || el.name.last.toLowerCase().includes(searchedString)){
+                const fullName = el.name.last + el.name.first
+                const nameFull = el.name.first + el.name.last
+
+                if (el.name.first.toLowerCase().includes(searchedString) || el.name.last.toLowerCase().includes(searchedString) || fullName.toLowerCase().includes(searchedString) || nameFull.toLowerCase().includes(searchedString)){
                     newArr.push(el)
+
                 }
             })
 
